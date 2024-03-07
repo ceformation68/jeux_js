@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+	<title>Exercice Javascript</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="css/styles.css" media="all"/>
+		<script src="javascript/shifumi.js" ></script>
+		</head>
+	<body>
+		<header>
+			<h1>Pierre - Feuille - Ciseaux</h1>
+		</header>
+		<main class="container">
+			<a href="index.php" alt="retour au menu" class="btn btn-light"><= Retour au menu</a>
+			<div class="row">
+				<h2>Jeu</h2>
+				<p>Faites votre choix :
+					<img class="shifumi-small" id="choix1" src="images/shifumi-pierre.png" 	onClick='joue(1)' />
+					<img class="shifumi-small" id="choix2" src="images/shifumi-feuille.png" onClick='joue(2)' />
+					<img class="shifumi-small" id="choix3" src="images/shifumi-ciseaux.png" onClick='joue(3)' />
+				</p>
+				<div id='resultat'></div>
+			</div>
+		</div>
+	</body>
+</html>

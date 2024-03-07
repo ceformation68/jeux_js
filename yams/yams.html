@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+	<title>Exercice Javascript</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="css/styles.css" media="all"/>
+		
+		<script src="javascript/yams.js"></script>
+		</head>
+	<body>
+		<header>
+			<h1>Yams</h1>
+		</header>
+		<main class="container">
+			<div class="row">
+				<div class="col-md-6">
+					<h2>Enoncé</h2>
+					<p id="enonce">
+						Créer un jeu de Yams
+						<ul>
+							<li>Trois tirages de dés</li>
+							<li>Possibilité de sélectionner certains dés</li>
+							<li>Choix du résultat</li>
+							<li>Calcul du résultat total</li>
+						</ul>
+					</p>
+				</div>
+				<div class="col-md-6">
+					<h2>Tirage</h2>
+					<form name="yams">
+						<table >
+							<tr>
+								<td align="center"><IMG src="images/unknown.png" name="photo1" id="photo1" width="50" height="50"></td>
+								<td align="center"><IMG src="images/unknown.png" name="photo2" id="photo2" width="50" height="50"></td>
+								<td align="center"><IMG src="images/unknown.png" name="photo3" id="photo3" width="50" height="50"></td>
+								<td align="center"><IMG src="images/unknown.png" name="photo4" id="photo4" width="50" height="50"></td>
+								<td align="center"><IMG src="images/unknown.png" name="photo5" id="photo5" width="50" height="50"></td>
+							</tr>
+							<tr>
+								<td align="center"><input type="checkbox" disabled name="chk1" id="chk1"></td>
+								<td align="center"><input type="checkbox" disabled name="chk2" id="chk2"></td>
+								<td align="center"><input type="checkbox" disabled name="chk3" id="chk3"></td>
+								<td align="center"><input type="checkbox" disabled name="chk4" id="chk4"></td>
+								<td align="center"><input type="checkbox" disabled name="chk5" id="chk5"></td>
+							</tr>
+						</table>
+						<button id="lanceDe" onClick="lancer();return false;">Lancer les dés</button>
+					</form>
+				</div>
+			</div>
+			<div class="row">
+				<h2>Résultat</h2>
+				<div class="col-md-6">
+					<form name="results_haut" >
+						<div class="table-responsive">
+							<table class="table">
+							<tr>
+								<td align="center"><b>1</b></td>
+								<td align="center"><input type="text" name="uns" id="aff1" value=" " size="10" READONLY></td>
+								<td align="center"><input type="button" value="- Valider -" name="unb" id="btnaff1" title="Valider" onclick="affecteResult('1')"></td>
+							</tr>
+							<tr>
+									<td align="center"><b>2</b></td>
+									<td align="center"><input type="text" name="deux" id="aff2" value=" " size="10" READONLY></td>
+									<td align="center"><input type="button" value="- Valider -" name="deuxb" id="btnaff2" title="Valider" onclick="affecteResult('2')""></td>
+							</tr>
+							<tr>
+									<td align="center"><b>3</b></td>
+									<td align="center"><input type="text" name="trois" id="aff3" value=" " size="10" READONLY></td>
+									<td align="center"><input type="button" value="- Valider -" name="troisb" id="btnaff3" title="Valider" onclick="affecteResult('3')"></td>
+							</tr>
+							<tr>
+									<td align="center"><b>4</b></td>
+									<td align="center"><input type="text" name="quatre" id="aff4" value=" " size="10" READONLY></td>
+									<td align="center"><input type="button" value="- Valider -" name="quatreb" id="btnaff4" title="Valider" onclick="affecteResult('4')"></td>
+							</tr>
+							<tr>
+									<td align="center"><b>5</b></td>
+									<td align="center"><input type="text" name="cinq" id="aff5" value=" " size="10" READONLY></td>
+									<td align="center"><input type="button" value="- Valider -" name="cinqb" id="btnaff5" title="Valider" onclick="affecteResult('5')"></td>
+							</tr>
+							<tr>
+									<td align="center"><b>6</b></td>
+									<td align="center"><input type="text" name="six" id="aff6" value=" " size="10" READONLY></td>
+									<td align="center"><input type="button" value="- Valider -" name="sixb" id="btnaff6" title="Valider" onclick="affecteResult('6')"></td>
+							</tr>
+							<tr>
+									<td align="center"><b>Bonus</b></td>
+									<td align="center"><input type="text" id="bonus" name="bonus" value=" " size="10" READONLY></td>
+
+							</tr>
+							<tr>
+									<td align="center"><b>Total</b></td>
+									<td align="center"><input type="text" id="tot" name="tot" value=" " size="10" READONLY ></td>
+
+							</tr>
+						</table>
+						</div>
+					</form>
+				</div>
+				<div class="col-md-6">
+					<form name="results_bas">
+						<div class="table-responsive">
+							<table class="table">
+								<tr>
+										<td align="center"><b>Plus</b></td>
+										<td align="center"><input type="text" name="plus" id="affplus" value=" " size="10" READONLY></td>
+										<td align="center"><input type="button" value="- Valider -" id="btnaffplus" name="plusb" title="Valider" onclick="affecteResult('plus')"></td>
+								</tr>
+								<tr>
+										<td align="center"><b>Moins</b></td>
+										<td align="center"><input type="text" name="moins" id="affmoins" value=" " size="10" READONLY></td>
+										<td align="center"><input type="button" value="- Valider -" id="btnaffmoins" name="moinsb" title="Valider" onclick="affecteResult('moins')"></td>
+								</tr>
+								<tr>
+										<td align="center"><b>Brelan</b></td>
+										<td align="center"><input type="text" name="brelan" id="affbrelan"  value=" " size="10" READONLY></td>
+										<td align="center"><input type="button" value="- Valider -" id="btnaffbrelan" name="brelanb" title="Valider" onclick="affecteResult('brelan')"></td>
+								</tr>
+								<tr>
+										<td align="center"><b>Suite</b></td>
+										<td align="center"><input type="text" name="suite" id="affsuite" value=" " size="10" READONLY></td>
+										<td align="center"><input type="button" value="- Valider -" id="btnaffsuite" name="suiteb" title="Valider" onclick="affecteResult('suite')"></td>
+								</tr>
+								<tr>
+										<td align="center"><b>Full</b></td>
+										<td align="center"><input type="text" name="full" id="afffull" value=" " size="10" READONLY></td>
+										<td align="center"><input type="button" value="- Valider -" id="btnafffull" name="fullb" title="Valider" onclick="affecteResult('full')"></td>
+								</tr>
+								<tr>
+										<td align="center"><b>Carré</b></td>
+										<td align="center"><input type="text" name="carre" id="affcarre" value=" " size="10" READONLY></td>
+										<td align="center"><input type="button" value="- Valider -" id="btnaffcarre" name="carreb" title="Valider" onclick="affecteResult('carre')"></td>
+								</tr>
+								<tr>
+										<td align="center"><b>Yam's</b></td>
+										<td align="center"><input type="text" name="yam" id="affyams" value=" " size="10" READONLY></td>
+										<td align="center"><input type="button" value="- Valider -" id="btnaffyams" name="yamsb" title="Valider" onclick="affecteResult('yams')"></td>
+								</tr>
+								<tr>
+										<td align="center"><b>Total</b></td>
+										<td align="center"><input type="text" id="totbis" name="totbis" value=" " size="10" READONLY></td>
+
+								</tr>
+							</table>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
